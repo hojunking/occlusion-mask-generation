@@ -1,7 +1,6 @@
 # Condition-based Synthetic Dataset for Amodal Segmentation of Occluded Cucumbers in Agricultural Images
 
-#### Computers and Electronics in Agriculture 2025  
-[📄 Paper](https://www.sciencedirect.com/science/article/pii/S0168169925009068) · [📑 BibTeX](assets/cucumber_bibTex.bib)
+#### Computers and Electronics in Agriculture 2025 [📄 Paper](https://www.sciencedirect.com/science/article/pii/S0168169925009068) · [📑 BibTeX](assets/cucumber_bibTex.bib)
 
 <a href="https://scholar.google.co.kr/citations?user=i4nJgtEAAAAJ&hl=ko&oi=sra">Jin-Ho Son</a><sup>1</sup>*,
 <a href="https://hojunking.github.io/webpages/hojunsong/">Hojun Song</a><sup>2</sup>,
@@ -27,7 +26,9 @@ The framework systematically synthesizes realistic occlusion scenarios by contro
 The resulting dataset enables robust training of amodal segmentation models, improving their ability to infer complete object shapes under **severe occlusion and dynamic lighting**, which are common challenges in precision agriculture environments.
 
 ## TODO
-- [ ] Code Release
+- [x] README Update
+- [x] Raw Code Release
+- [ ] Specific Code Release
 
 ## Citation
 
@@ -53,6 +54,6 @@ abstract = {Occlusion, caused by overlapping leaves and dense foliage, poses sig
 This work was supported by the National Research Foundation of Korea (NRF) under the BK21 FOUR program.
 
 Our work builds on and utilizes the following tools and models:
-- YOLOv10
-- Segment Anything Model (SAM v2)
-- AISFormer
+- [YOLOv10](https://github.com/THU-MIG/yolov10)
+- [Segment Anything Model (SAM v2)](https://github.com/facebookresearch/sam2)
+- [AISFormer](https://github.com/UARK-AICV/AISFormer)
