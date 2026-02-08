@@ -6,7 +6,7 @@
 <a href="https://hojunking.github.io/webpages/hojunsong/">Hojun Song</a><sup>2</sup>,
 <a href="https://scholar.google.co.kr/citations?user=m-NwAdUAAAAJ&hl=ko&oi=sra">Chae-yeong Song</a><sup>2</sup>,
 <a href="https://scholar.google.co.kr/citations?user=QzuLLbcAAAAJ&hl=ko&oi=sra">Minse Ha</a><sup>2</sup>,
-Dabin Kang<sup>2</sup>,
+<a href="https://scholar.google.com/citations?user=mN32nwQAAAAJ&hl=ko">Dabin Kang</a><sup>2</sup>,
 and <a href="https://scholar.google.co.kr/citations?user=n5RWOaMAAAAJ&hl=ko&oi=sra">Yu-Shin Ha</a><sup>1,3†</sup>
 
 \* Equal contribution  
