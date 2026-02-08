@@ -27,10 +27,10 @@ The resulting dataset enables robust training of amodal segmentation models, imp
 
 ## TODO
 - [x] README Update
-- [x] Raw Code Release
+- [x] Raw Code Release (Not recommend to use)
 - [ ] Specific Code Release
 
-## Quickstart (Added)
+## Quickstart
 
 ### 1) Install
 
