@@ -51,7 +51,8 @@ abstract = {Occlusion, caused by overlapping leaves and dense foliage, poses sig
 
 ## Acknowledgement
 
-This work was supported by the National Research Foundation of Korea (NRF) under the BK21 FOUR program.
+This work was supported by the National Research Foundation of Korea (NRF) under the BK21 FOUR program.  
+This research was also conducted as part of the <a href="https://www.knu.ac.kr/wbbs/wbbs/bbs/btin/viewBtin.action?bbs_cde=1&btin.bbs_cde=1&btin.doc_no=1331701&btin.appl_no=000000&menu_idx=67">**2024 BK21 Graduate Student Interdisciplinary Community Project** (융복합공동체 프로젝트)</a>, under the team **“Deep Learning-based Automatic Cucumber Harvesting Robot Research”**, led by <a href="https://hojunking.github.io/webpages/hojunsong/">**Hojun Song**</a>.
 
 Our work builds on and utilizes the following tools and models:
 - [YOLOv10](https://github.com/THU-MIG/yolov10)
