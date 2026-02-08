@@ -1,35 +1,54 @@
-# config.py
+﻿# config.py
+from pathlib import Path
+import os
 
+REPO_ROOT = Path(__file__).resolve().parent
+DEFAULT_DATA_ROOT = Path(os.environ.get("OMG_DATA_ROOT", REPO_ROOT / "data"))
+DEFAULT_OUT_ROOT = Path(os.environ.get("OMG_OUT_ROOT", REPO_ROOT / "outputs"))
 
-# 하이퍼파라미터
 HYPERPARAMETERS = {
-    "dataset_type": 'debugging', ## [train, valid, debugging]
-    "image_index_start": 0,  # 이미지 인덱스 시작값
-    "position": "middle",  # 잎 위치 결정 옵션 (top, middle, bottom, random)
+    "dataset_type": "debugging",  # [train, valid, debugging]
+    "image_index_start": 0,
+    "position": "middle",  # top, middle, bottom, random
     "occlusion_ratio": 0.5,
-    "multi_leaves": 0,  # 다수의 잎 사용 여부 [0: False, 1: top, bottom dual leaves, 2: overlap dual leaves]
-    'random_ratio': True,  # Random ratio 
-    "initial_leaf_ratio": (0.20, 0.4),  # 잎 초기 크기 비율
-    "r_settings": [50, 70, 90],  # Random ratio settings #(0.5, 0.75, 0.9)
-    "r_proportions": [5, 4, 1],  # Random ratio proportions
+    "multi_leaves": 0,  # 0: single leaf, 1: dual leaves, 2: overlap dual leaves
+    "random_ratio": True,
+    "initial_leaf_ratio": (0.20, 0.4),
+    "r_settings": [50, 70, 90],
+    "r_proportions": [5, 4, 1],
     "sort": True,
 }
-# baseline position: middle, occlusion_ratio: 0.5, multi_leaves: 0, random_ratio: False, initial_leaf_ratio: (0.20, 0.4), r_settings: [50, 75, 90], r_proportions: [5, 4, 1]
-# condition 1: position: random, occlusion_ratio: 0.5, multi_leaves: 0, random_ratio: True, initial_leaf_ratio: (0.20, 0.4), r_settings: [50, 75, 90], r_proportions: [5, 4, 1]
-# condition 2: position: random, occlusion_ratio: 0.5, multi_leaves: 1, random_ratio: True, initial_leaf_ratio: (0.20, 0.4), r_settings: [50, 75, 90], r_proportions: [5, 4, 1]
-# condition 3: position: random, occlusion_ratio: 0.5, multi_leaves: 2, random_ratio: True, initial_leaf_ratio: (0.20, 0.4), r_settings: [50, 75, 90], r_proportions: [5, 4, 1]
 
-# 경로 설정
-INPUT_PATHS = {
-    "cucumber_images_dir": "/home/knuvi/Desktop/song/occlusion-mask-generation/data/splitted/images/",  # 오이 이미지 디렉토리
-    "cucumber_masks_dir": "/home/knuvi/Desktop/song/occlusion-mask-generation/data/splitted/masks/",  # 오이 마스크 디렉토리
-    "leaf_cropped_dir": "/home/knuvi/Desktop/song/occlusion-mask-generation/data/splitted/cropped_leaves/"  # 잎 객체 디렉토리
+DEFAULT_SAMPLE_LIMITS = {
+    "train": 10000,
+    "valid": 4000,
+    "debugging": 5,
 }
 
-OUTPUT_PATHS = {
-    "save_dir": "/home/knuvi/Desktop/song/occlusion-mask-generation/data/synthesis/amodal_images_baseline_test2",  # 합성 이미지 저장 디렉토리
-    "mask_save_dir": "/home/knuvi/Desktop/song/occlusion-mask-generation/data/synthesis/modal_masks_baseline_test2",  # Modal 마스크 저장 디렉토리
-    "json_dir": "/home/knuvi/Desktop/song/occlusion-mask-generation/data/synthesis/amodal_info_baseline_test2"  # Amodal 정보 JSON 저장 디렉토리
-}
+DEFAULT_TARGET_SIZE = (768, 1024)  # (width, height)
 
 
+def resolve_input_paths(data_root: Path):
+    data_root = Path(data_root)
+    return {
+        "cucumber_images_dir": data_root / "splitted" / "images",
+        "cucumber_masks_dir": data_root / "splitted" / "masks",
+        "leaf_cropped_dir": data_root / "splitted" / "cropped_leaves",
+    }
+
+
+def resolve_output_paths(out_root: Path):
+    out_root = Path(out_root)
+    return {
+        "save_dir": out_root / "amodal_images",
+        "mask_save_dir": out_root / "modal_masks",
+        "json_dir": out_root / "amodal_info",
+    }
+
+
+# Backward-compatible string paths
+_input_paths = resolve_input_paths(DEFAULT_DATA_ROOT)
+_output_paths = resolve_output_paths(DEFAULT_OUT_ROOT)
+
+INPUT_PATHS = {k: str(v) + os.sep for k, v in _input_paths.items()}
+OUTPUT_PATHS = {k: str(v) for k, v in _output_paths.items()}

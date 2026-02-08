@@ -1,19 +1,19 @@
 ﻿#!/usr/bin/env bash
 set -euo pipefail
 
-# Usage:
-#   ./bash.sh [DATA_ROOT] [OUT_ROOT]
-# Example:
-#   ./bash.sh ./data ./outputs
-
 DATA_ROOT="${1:-./data}"
 OUT_ROOT="${2:-./outputs}"
+
+if ! command -v python >/dev/null 2>&1; then
+  echo "Python not found in PATH. Install Python 3.10+ and retry." >&2
+  exit 1
+fi
 
 python modal_mask_generation.py \
   --data_root "${DATA_ROOT}" \
   --out_root "${OUT_ROOT}" \
-  --dataset_type train \
+  --dataset_type debugging \
   --position random \
-  --multi_leaves 2 \
+  --multi_leaves 0 \
   --random_ratio true \
-  --sample_limit 100
+  --sample_limit 2

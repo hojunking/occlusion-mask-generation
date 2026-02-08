@@ -1,4 +1,4 @@
-# Condition-based Synthetic Dataset for Amodal Segmentation of Occluded Cucumbers in Agricultural Images
+﻿# Condition-based Synthetic Dataset for Amodal Segmentation of Occluded Cucumbers in Agricultural Images
 
 #### Computers and Electronics in Agriculture 2025 [📄 Paper](https://www.sciencedirect.com/science/article/pii/S0168169925009068) · [📑 BibTeX](assets/cucumber_bibTex.bib)
 
@@ -30,6 +30,68 @@ The resulting dataset enables robust training of amodal segmentation models, imp
 - [x] Raw Code Release
 - [ ] Specific Code Release
 
+## Quickstart (Added)
+
+### 1) Install
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2) Prepare data layout
+
+```
+data/
+  splitted/
+    images/{train,valid,debugging}
+    masks/{train,valid,debugging}
+    cropped_leaves/{train,valid,debugging}
+```
+
+Notes:
+- Cucumber masks are selected by filename containing `_0_`.
+- Leaf crops are expected to be RGBA with alpha channel.
+
+### 3) Run (CLI)
+
+```bash
+python modal_mask_generation.py \
+  --data_root C:\path\to\data \
+  --out_root C:\path\to\outputs \
+  --dataset_type debugging \
+  --sample_limit 5 \
+  --position random \
+  --multi_leaves 0 \
+  --random_ratio true
+```
+
+### 4) Run (Scripts)
+
+```bash
+bash scripts/run_generation.sh ./data ./outputs debugging random 0 true 5
+```
+
+```powershell
+.\scripts\run_generation.ps1 -DataRoot .\data -OutRoot .\outputs -DatasetType debugging -Position random -MultiLeaves 0 -RandomRatio $true -SampleLimit 5
+```
+
+### Output structure
+
+```
+outputs/
+  amodal_images/
+  modal_masks/
+  amodal_info/
+    dataset.json
+```
+
+## CLI Options
+
+- `--seed`: set RNG seed for reproducibility
+- `--dry_run true`: validate paths and exit without generating data
+- `--log_level DEBUG|INFO|WARNING|ERROR`: control console verbosity
+- `--target_size WIDTH,HEIGHT`: override output size (default `768,1024`)
+
 ## Citation
 
 If you find this work useful, please cite:
@@ -58,3 +120,4 @@ Our work builds on and utilizes the following tools and models:
 - [YOLOv10](https://github.com/THU-MIG/yolov10)
 - [Segment Anything Model (SAM v2)](https://github.com/facebookresearch/sam2)
 - [AISFormer](https://github.com/UARK-AICV/AISFormer)
+
