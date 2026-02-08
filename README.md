@@ -17,7 +17,7 @@ and <a href="https://scholar.google.co.kr/citations?user=n5RWOaMAAAAJ&hl=ko&oi=s
 <sup>3</sup>Upland Field Machinery Research Center, Kyungpook National University (KNU)
 
 <p align="center">
-  <img src="./assets/framework.png" alt="Framework Overview" width="90%">
+  <img src="./assets/framework.png" alt="Framework Overview" width="70%">
 </p>
 
 This repository presents a **condition-based synthetic dataset generation framework** for **amodal instance segmentation of occluded cucumbers** in agricultural images.  
